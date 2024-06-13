@@ -19,6 +19,7 @@ namespace MRMDesktopUI.ViewModels
             {
                 _userName = value;
                 NotifyOfPropertyChange(() => UserName);
+                NotifyOfPropertyChange(() => CanLogIn);
             }
         }
 
@@ -29,10 +30,28 @@ namespace MRMDesktopUI.ViewModels
             {
                 _password = value;
                 NotifyOfPropertyChange(() => Password);
+                NotifyOfPropertyChange(() => CanLogIn);
             }
         }
 
+        public bool CanLogIn
+        {
+            get
+            {
+                bool output = false;
 
+                if (UserName?.Length > 0 && Password?.Length > 0)
+                {
+                    output = true;
+                }
 
+                return output;
+            }
+        }
+
+        public void LogIn()
+        {
+            Console.WriteLine();
+        }
     }
 }
