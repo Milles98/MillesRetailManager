@@ -51,7 +51,7 @@ namespace MRMDesktopUI.ViewModels
 
         public void LogIn()
         {
-            Console.WriteLine();
+
         }
     }
 }
