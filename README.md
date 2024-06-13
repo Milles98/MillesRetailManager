@@ -40,4 +40,4 @@ Contributions to the MRM solution are welcome. Please feel free to submit pull r
 
 ## License
 
-The MRM solution is licensed under [license name]. For more details, see the LICENSE file in the project repository.
+The MRM solution is licensed under GPL 3-0. For more details, see the LICENSE file in the project repository.
