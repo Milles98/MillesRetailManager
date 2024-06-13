@@ -29,5 +29,16 @@ namespace MRMDataManager.Library
                 return rows;
             }
         }
+
+        public void SaveData<T>(string storedProcedure, T parameters, string connectionStringName)
+        {
+            string connectionString = GetConnectionString(connectionStringName);
+
+            using (IDbConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Execute(storedProcedure, parameters,
+                   commandType: CommandType.StoredProcedure);
+            }
+        }
     }
 }
