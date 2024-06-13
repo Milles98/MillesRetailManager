@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using MRMDesktopUI.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,12 @@ namespace MRMDesktopUI.ViewModels
     {
         private string _userName;
         private string _password;
+        private IAPIHelper _apiHelper;
+
+        public LoginViewModel(IAPIHelper apiHelper)
+        {
+            _apiHelper = apiHelper;
+        }
 
         public string UserName
         {
@@ -49,9 +56,9 @@ namespace MRMDesktopUI.ViewModels
             }
         }
 
-        public void LogIn()
+        public async Task LogIn()
         {
-
+            var result = await _apiHelper.Authenticate(UserName, Password);
         }
     }
 }

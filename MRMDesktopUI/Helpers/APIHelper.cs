@@ -12,7 +12,7 @@ namespace MRMDesktopUI.Helpers
 {
     public class APIHelper : IAPIHelper
     {
-        public HttpClient ApiClient { get; set; }
+        private HttpClient apiClient { get; set; }
 
         public APIHelper()
         {
@@ -23,10 +23,10 @@ namespace MRMDesktopUI.Helpers
         {
             string api = ConfigurationManager.AppSettings["api"];
 
-            ApiClient = new HttpClient();
-            ApiClient.BaseAddress = new Uri(api);
-            ApiClient.DefaultRequestHeaders.Clear();
-            ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            apiClient = new HttpClient();
+            apiClient.BaseAddress = new Uri(api);
+            apiClient.DefaultRequestHeaders.Clear();
+            apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
         public async Task<AuthenticatedUser> Authenticate(string username, string password)
@@ -38,7 +38,7 @@ namespace MRMDesktopUI.Helpers
                 new KeyValuePair<string, string>("password", password),
             });
 
-            using (HttpResponseMessage response = await ApiClient.PostAsync("/Token", data))
+            using (HttpResponseMessage response = await apiClient.PostAsync("/Token", data))
             {
                 if (response.IsSuccessStatusCode)
                 {
