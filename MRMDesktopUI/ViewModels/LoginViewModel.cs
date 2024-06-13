@@ -63,9 +63,9 @@ namespace MRMDesktopUI.ViewModels
             get { return _errorMessage; }
             set
             {
+                _errorMessage = value;
                 NotifyOfPropertyChange(() => IsErrorVisible);
                 NotifyOfPropertyChange(() => ErrorMessage);
-                _errorMessage = value;
             }
         }
 
