@@ -9,6 +9,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MRMData", "MRMData\MRMData.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MRMDesktopUI", "MRMDesktopUI\MRMDesktopUI.csproj", "{1DA5288A-A5E8-47F1-830E-87CB4205D4D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MRMDataManager.Library", "MRMDataManager.Library\MRMDataManager.Library.csproj", "{6B14F8E8-C9CF-4777-B947-4AB5F824D674}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{1DA5288A-A5E8-47F1-830E-87CB4205D4D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DA5288A-A5E8-47F1-830E-87CB4205D4D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DA5288A-A5E8-47F1-830E-87CB4205D4D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B14F8E8-C9CF-4777-B947-4AB5F824D674}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B14F8E8-C9CF-4777-B947-4AB5F824D674}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B14F8E8-C9CF-4777-B947-4AB5F824D674}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B14F8E8-C9CF-4777-B947-4AB5F824D674}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
