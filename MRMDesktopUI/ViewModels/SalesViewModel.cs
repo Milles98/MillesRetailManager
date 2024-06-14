@@ -57,9 +57,9 @@ namespace MRMDesktopUI.ViewModels
         }
 
 
-        private BindingList<ProductModel> _cart;
+        private BindingList<CartItemModel> _cart = new BindingList<CartItemModel>();
 
-        public BindingList<ProductModel> Cart
+        public BindingList<CartItemModel> Cart
         {
             get { return _cart; }
             set
@@ -130,7 +130,12 @@ namespace MRMDesktopUI.ViewModels
 
         public void AddToCart()
         {
-
+            CartItemModel item = new CartItemModel
+            {
+                Product = SelectedProduct,
+                QuantityInCart = ItemQuantity
+            };
+            _cart.Add(item);
         }
 
         public bool CanRemoveFromCart
