@@ -100,7 +100,7 @@ namespace MRMDesktopUI.ViewModels
                 //capture more info about user
                 await _apiHelper.GetLoggedInUserInfo(result.Access_Token);
 
-                await _events.PublishOnUIThreadAsync(new LogOnEventModel());
+                _events.PublishOnUIThread(new LogOnEvent());
 
             }
             catch (Exception ex)

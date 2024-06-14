@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MRMDesktopUI.EventModels
 {
-    public class LogOnEventModel
+    public class LogOnEvent
     {
     }
 }
