@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MRMDesktopUI.Library.Api
 {
-    public class ProductEndpoint
+    public class ProductEndpoint : IProductEndpoint
     {
         private IAPIHelper _apiHelper;
         public ProductEndpoint(IAPIHelper apiHelper)
