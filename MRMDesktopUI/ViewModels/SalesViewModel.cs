@@ -70,7 +70,7 @@ namespace MRMDesktopUI.ViewModels
         }
 
 
-        private int _itemQuantity;
+        private int _itemQuantity = 1;
 
         public int ItemQuantity
         {
@@ -122,8 +122,6 @@ namespace MRMDesktopUI.ViewModels
             {
                 bool output = false;
 
-                //make sure something is select
-                //make sure item quantity
                 if (ItemQuantity > 0 && SelectedProduct?.QuantityInStock >= ItemQuantity)
                 {
                     output = true;
@@ -135,12 +133,27 @@ namespace MRMDesktopUI.ViewModels
 
         public void AddToCart()
         {
-            CartItemModel item = new CartItemModel
+            CartItemModel existingItem = Cart.FirstOrDefault(x => x.Product == SelectedProduct);
+
+            if (existingItem != null)
             {
-                Product = SelectedProduct,
-                QuantityInCart = ItemQuantity
-            };
-            _cart.Add(item);
+                existingItem.QuantityInCart += ItemQuantity;
+                // Hack should be better solution for this (refreshing cart display)
+                Cart.Remove(existingItem);
+                Cart.Add(existingItem);
+            }
+            else
+            {
+                CartItemModel item = new CartItemModel
+                {
+                    Product = SelectedProduct,
+                    QuantityInCart = ItemQuantity
+                };
+                _cart.Add(item);
+            }
+
+            SelectedProduct.QuantityInStock -= ItemQuantity;
+            ItemQuantity = 1;
             NotifyOfPropertyChange(() => SubTotal);
         }
 
