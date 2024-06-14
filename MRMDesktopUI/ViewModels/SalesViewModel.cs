@@ -87,8 +87,13 @@ namespace MRMDesktopUI.ViewModels
         {
             get
             {
-                //TODO replace with calculation
-                return "$0.00";
+                decimal subTotal = 0;
+
+                foreach (var item in _cart)
+                {
+                    subTotal += (item.Product.RetailPrice * item.QuantityInCart);
+                }
+                return subTotal.ToString("C");
             }
         }
 
@@ -136,6 +141,7 @@ namespace MRMDesktopUI.ViewModels
                 QuantityInCart = ItemQuantity
             };
             _cart.Add(item);
+            NotifyOfPropertyChange(() => SubTotal);
         }
 
         public bool CanRemoveFromCart
@@ -152,7 +158,7 @@ namespace MRMDesktopUI.ViewModels
 
         public void RemoveFromCart()
         {
-
+            NotifyOfPropertyChange(() => SubTotal);
         }
 
         public bool CanCheckOut
