@@ -8,6 +8,7 @@ namespace MRMDesktopUI.Library.Models
 {
     public class LoggedInUserModel
     {
+        public string Token { get; set; }
         public string Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
