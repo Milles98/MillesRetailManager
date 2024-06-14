@@ -8,7 +8,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MRMDesktopUI.Helpers
+namespace MRMDesktopUI.Library.Api
 {
     public class APIHelper : IAPIHelper
     {
