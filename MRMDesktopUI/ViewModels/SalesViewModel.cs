@@ -52,6 +52,7 @@ namespace MRMDesktopUI.ViewModels
             {
                 _selectedProduct = value;
                 NotifyOfPropertyChange(() => SelectedProduct);
+                NotifyOfPropertyChange(() => CanAddToCart);
             }
         }
 
@@ -78,6 +79,7 @@ namespace MRMDesktopUI.ViewModels
             {
                 _itemQuantity = value;
                 NotifyOfPropertyChange(() => ItemQuantity);
+                NotifyOfPropertyChange(() => CanAddToCart);
             }
         }
 
@@ -117,6 +119,10 @@ namespace MRMDesktopUI.ViewModels
 
                 //make sure something is select
                 //make sure item quantity
+                if (ItemQuantity > 0 && SelectedProduct?.QuantityInStock >= ItemQuantity)
+                {
+                    output = true;
+                }
 
                 return output;
             }
