@@ -1,6 +1,6 @@
 # MRM Solution Overview
 
-This document provides an overview of the MRM (Model-Representation-Management) solution, detailing its structure, key components, and functionalities. The MRM solution is designed to facilitate the management and representation of various models within an application, focusing on areas such as data management, UI interactions, and API documentation.
+This document provides an overview of the MRM (Milles Retail Manager) solution, detailing its structure, key components, and functionalities. The MRM solution is designed to facilitate the management and representation of various models within an application, focusing on areas such as data management, UI interactions, and API documentation.
 
 ## Solution Structure
 
