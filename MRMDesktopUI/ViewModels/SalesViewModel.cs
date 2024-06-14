@@ -81,7 +81,7 @@ namespace MRMDesktopUI.ViewModels
             {
                 bool output = false;
 
-                //make sure some is select
+                //make sure something is select
                 //make sure item quantity
 
                 return output;
@@ -99,14 +99,30 @@ namespace MRMDesktopUI.ViewModels
             {
                 bool output = false;
 
-                //make sure some is select
-                //make sure item quantity
+                //make sure something is select
 
                 return output;
             }
         }
 
         public void RemoveFromCart()
+        {
+
+        }
+
+        public bool CanCheckOut
+        {
+            get
+            {
+                bool output = false;
+
+                //make sure there is something in cart
+
+                return output;
+            }
+        }
+
+        public void CheckOut()
         {
 
         }
