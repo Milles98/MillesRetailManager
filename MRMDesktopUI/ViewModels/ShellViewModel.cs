@@ -13,17 +13,21 @@ namespace MRMDesktopUI.ViewModels
     {
         private LoginViewModel _loginVM;
         private IEventAggregator _events;
-        public ShellViewModel(LoginViewModel loginVM, IEventAggregator events)
+        private SalesViewModel _salesVM;
+        public ShellViewModel(LoginViewModel loginVM, IEventAggregator events, SalesViewModel salesVM)
         {
             _events = events;
-            _events.Subscribe(this);
             _loginVM = loginVM;
+            _salesVM = salesVM;
+
+            _events.Subscribe(this);
+
             ActivateItem(_loginVM);
         }
 
         public void Handle(LogOnEvent message)
         {
-            throw new NotImplementedException();
+            ActivateItem(_salesVM);
         }
     }
 }
