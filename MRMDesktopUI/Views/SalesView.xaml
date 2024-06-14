@@ -17,5 +17,32 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!-- Column 0 -->
+        <TextBlock Text="Items" Grid.Row="0" Grid.Column="0"/>
+        <ListBox x:Name="Products" Grid.Row="1" Grid.Column="0"
+                 MinHeight="200" MinWidth="150"/>
+
+        <!-- Column 1 -->
+        <StackPanel Orientation="Vertical" Grid.Column="1"
+                    Grid.Row="1">
+            <TextBlock Text="Quantity"/>
+            <TextBox x:Name="ItemQuantity" MinWidth="100"/>
+            <Button x:Name="AddToCart" Content="Add to Cart"/>
+            <Button x:Name="RemoveFromCart" Content="Remove from Cart"/>
+        </StackPanel>
+
+        <!-- Column 2 -->
+        <TextBlock Text="Cart" Grid.Row="0" Grid.Column="2"/>
+        <ListBox x:Name="Cart" Grid.Row="1" Grid.Column="2"
+                MinHeight="200" MinWidth="150"/>
     </Grid>
 </UserControl>
+
+<!-- Rows är horizontal, Column är vertical! -->
