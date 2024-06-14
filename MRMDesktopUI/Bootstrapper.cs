@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using MRMDesktopUI.Helpers;
+using MRMDesktopUI.Library.Api;
 using MRMDesktopUI.ViewModels;
 using System;
 using System.Collections.Generic;
