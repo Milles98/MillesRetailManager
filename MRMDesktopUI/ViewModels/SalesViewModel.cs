@@ -90,13 +90,42 @@ namespace MRMDesktopUI.ViewModels
         {
             get
             {
-                decimal subTotal = 0;
+                return CalculateSubTotal().ToString("C");
+            }
+        }
 
-                foreach (var item in _cart)
+        private decimal CalculateSubTotal()
+        {
+            decimal subTotal = 0;
+
+            foreach (var item in _cart)
+            {
+                subTotal += (item.Product.RetailPrice * item.QuantityInCart);
+            }
+
+            return subTotal;
+        }
+
+        private decimal CalculateTax()
+        {
+            decimal taxAmount = 0;
+            decimal taxRate = _configHelper.GetTaxRate() / 100;
+
+            foreach (var item in _cart)
+            {
+                if (item.Product.IsTaxable)
                 {
-                    subTotal += (item.Product.RetailPrice * item.QuantityInCart);
+                    taxAmount += (item.Product.RetailPrice * item.QuantityInCart * taxRate);
                 }
-                return subTotal.ToString("C");
+            }
+
+            return taxAmount;
+        }
+        public string Tax
+        {
+            get
+            {
+                return CalculateTax().ToString("C");
             }
         }
 
@@ -104,29 +133,10 @@ namespace MRMDesktopUI.ViewModels
         {
             get
             {
-                decimal taxAmount = 0;
-                decimal taxRate = _configHelper.GetTaxRate();
-
-                foreach (var item in _cart)
-                {
-                    if (item.Product.IsTaxable)
-                    {
-                        taxAmount += (item.Product.RetailPrice * item.QuantityInCart * taxRate);
-                    }
-                }
-                return taxAmount.ToString("C");
+                decimal total = CalculateSubTotal() + CalculateTax();
+                return total.ToString("C");
             }
         }
-
-        public string Tax
-        {
-            get
-            {
-                //TODO replace with calculation
-                return "$0.00";
-            }
-        }
-
 
         public bool CanAddToCart
         {
@@ -167,6 +177,8 @@ namespace MRMDesktopUI.ViewModels
             SelectedProduct.QuantityInStock -= ItemQuantity;
             ItemQuantity = 1;
             NotifyOfPropertyChange(() => SubTotal);
+            NotifyOfPropertyChange(() => Tax);
+            NotifyOfPropertyChange(() => Total);
         }
 
         public bool CanRemoveFromCart
@@ -184,6 +196,8 @@ namespace MRMDesktopUI.ViewModels
         public void RemoveFromCart()
         {
             NotifyOfPropertyChange(() => SubTotal);
+            NotifyOfPropertyChange(() => Tax);
+            NotifyOfPropertyChange(() => Total);
         }
 
         public bool CanCheckOut
