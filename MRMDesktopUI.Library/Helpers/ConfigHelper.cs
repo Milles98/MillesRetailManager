@@ -9,6 +9,7 @@ namespace MRMDesktopUI.Library.Helpers
 {
     public class ConfigHelper : IConfigHelper
     {
+        //TODO: move this from config to the API
         public decimal GetTaxRate()
         {
             string rateText = ConfigurationManager.AppSettings["taxRate"];

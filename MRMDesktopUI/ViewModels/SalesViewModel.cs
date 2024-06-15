@@ -88,10 +88,7 @@ namespace MRMDesktopUI.ViewModels
 
         public string SubTotal
         {
-            get
-            {
-                return CalculateSubTotal().ToString("C");
-            }
+            get { return CalculateSubTotal().ToString("C"); }
         }
 
         private decimal CalculateSubTotal()
@@ -125,12 +122,10 @@ namespace MRMDesktopUI.ViewModels
 
             return taxAmount;
         }
+
         public string Tax
         {
-            get
-            {
-                return CalculateTax().ToString("C");
-            }
+            get { return CalculateTax().ToString("C"); }
         }
 
         public string Total
@@ -183,6 +178,7 @@ namespace MRMDesktopUI.ViewModels
             NotifyOfPropertyChange(() => SubTotal);
             NotifyOfPropertyChange(() => Tax);
             NotifyOfPropertyChange(() => Total);
+            NotifyOfPropertyChange(() => CanCheckOut);
         }
 
         public bool CanRemoveFromCart
@@ -202,6 +198,7 @@ namespace MRMDesktopUI.ViewModels
             NotifyOfPropertyChange(() => SubTotal);
             NotifyOfPropertyChange(() => Tax);
             NotifyOfPropertyChange(() => Total);
+            NotifyOfPropertyChange(() => CanCheckOut);
         }
 
         public bool CanCheckOut
@@ -211,6 +208,10 @@ namespace MRMDesktopUI.ViewModels
                 bool output = false;
 
                 //make sure there is something in cart
+                if (Cart.Count > 0)
+                {
+                    output = true;
+                }
 
                 return output;
             }
@@ -218,9 +219,7 @@ namespace MRMDesktopUI.ViewModels
 
         public void CheckOut()
         {
-
+            //Create a SaleModel and post to API
         }
-
-
     }
 }
