@@ -167,9 +167,6 @@ namespace MRMDesktopUI.ViewModels
             if (existingItem != null)
             {
                 existingItem.QuantityInCart += ItemQuantity;
-                // Hack should be better solution for this (refreshing cart display)
-                Cart.Remove(existingItem);
-                Cart.Add(existingItem);
             }
             else
             {
