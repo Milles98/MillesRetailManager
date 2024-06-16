@@ -29,7 +29,7 @@ namespace MRMDesktopUI
             "PasswordChanged");
         }
 
-        protected override void Configure()
+        private IMapper ConfigureAutomapper()
         {
             var config = new MapperConfiguration(cfg =>
             {
@@ -37,9 +37,15 @@ namespace MRMDesktopUI
                 cfg.CreateMap<CartItemModel, CartItemDisplayModel>();
             });
 
-            var mapper = config.CreateMapper();
+            var output = config.CreateMapper();
 
-            _container.Instance(mapper);
+            return output;
+        }
+
+        protected override void Configure()
+        {
+
+            _container.Instance(ConfigureAutomapper());
 
             _container.Instance(_container)
                 .PerRequest<IProductEndpoint, ProductEndpoint>()
