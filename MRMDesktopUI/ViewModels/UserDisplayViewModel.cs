@@ -57,7 +57,7 @@ namespace MRMDesktopUI.ViewModels
 
                 if (ex.Message == "Unauthorized")
                 {
-                    _status.UpdateMessage("Unauthorized Access", "You don't have permission to interact with the Sales Form.");
+                    _status.UpdateMessage("Unauthorized Access", "You don't have permission to interact with the Users Form.");
                     _window.ShowDialog(_status, null, settings);
                 }
                 else
