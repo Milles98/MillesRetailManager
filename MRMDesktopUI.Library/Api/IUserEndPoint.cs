@@ -6,8 +6,6 @@ namespace MRMDesktopUI.Library.Api
 {
     public interface IUserEndPoint
     {
-        IAPIHelper _apiHelper { get; }
-
         Task<List<UserModel>> GetAll();
     }
 }
