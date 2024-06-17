@@ -67,6 +67,13 @@ namespace MRMDesktopUI.ViewModels
             }
         }
 
+        private async Task ResetSalesViewModel()
+        {
+            Cart = new BindingList<CartItemDisplayModel>();
+            //TODO add clearing the selected cartitem if it does not do it itself
+            await LoadProducts();
+        }
+
         private CartItemDisplayModel _selectedCartItem;
 
         public CartItemDisplayModel SelectedCartItem
@@ -266,6 +273,8 @@ namespace MRMDesktopUI.ViewModels
             }
 
             await _saleEndPoint.PostSale(sale);
+
+            await ResetSalesViewModel();
         }
     }
 }
