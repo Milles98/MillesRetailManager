@@ -18,5 +18,12 @@ namespace MRMDataManager.Library.DataAccess
 
             return output;
         }
+
+        public void SaveInventoryRecord(InventoryModel item)
+        {
+            SqlDataAccess sql = new SqlDataAccess();
+
+            sql.SaveData("dbo.spInventory_Insert", item, "MRMData");
+        }
     }
 }
