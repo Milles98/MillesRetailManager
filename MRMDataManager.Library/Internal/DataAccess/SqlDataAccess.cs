@@ -52,6 +52,8 @@ namespace MRMDataManager.Library.Internal.DataAccess
             _connection.Open();
 
             _transaction = _connection.BeginTransaction();
+
+            IsClosed = false;
         }
 
         public List<T> LoadDataInTransaction<T, U>(string storedProcedure, U parameters)
@@ -68,21 +70,40 @@ namespace MRMDataManager.Library.Internal.DataAccess
                commandType: CommandType.StoredProcedure, transaction: _transaction);
         }
 
+        private bool IsClosed = false;
+
         public void CommitTransaction()
         {
             _transaction?.Commit();
             _connection?.Close();
+
+            IsClosed = true;
         }
 
         public void RollBackTransaction()
         {
             _transaction?.Rollback();
             _connection?.Close();
+
+            IsClosed = true;
         }
 
         public void Dispose()
         {
-            CommitTransaction();
+            if (IsClosed == false)
+            {
+                try
+                {
+                    CommitTransaction();
+                }
+                catch
+                {
+                    // TODO - log this issue
+                }
+            }
+
+            _transaction = null;
+            _connection = null;
         }
 
         // Open connection/start transaction method
