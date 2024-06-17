@@ -63,8 +63,6 @@ namespace MRMDataManager.Library.DataAccess
                     //save sale model
                     sql.SaveDataInTransaction("dbo.spSale_Insert", sale);
 
-                    sql.SaveData("dbo.spSale_Insert", sale, "MRMData");
-
                     //get the id from the sale model
                     sale.Id = sql.LoadDataInTransaction<int, dynamic>("spSale_Lookup", new { sale.CashierId, sale.SaleDate }).FirstOrDefault();
 
