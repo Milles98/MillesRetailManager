@@ -34,6 +34,35 @@ namespace MRMDesktopUI.ViewModels
             }
         }
 
+        private UserModel _selectedUser;
+
+        public UserModel SelectedUser
+        {
+            get { return _selectedUser; }
+            set
+            {
+                _selectedUser = value;
+                SelectedUserName = value.Email;
+                NotifyOfPropertyChange(() => SelectedUser);
+            }
+        }
+
+        private string _selectedUserName;
+
+        public string SelectedUserName
+        {
+            get
+            {
+                return _selectedUserName;
+            }
+            set
+            {
+                _selectedUserName = value;
+                NotifyOfPropertyChange(() => SelectedUserName);
+            }
+        }
+
+
         public UserDisplayViewModel(StatusInfoViewModel status, IWindowManager window, IUserEndPoint userEndpoint)
         {
             _status = status;
