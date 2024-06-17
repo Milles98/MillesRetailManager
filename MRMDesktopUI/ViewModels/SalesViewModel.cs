@@ -72,6 +72,11 @@ namespace MRMDesktopUI.ViewModels
             Cart = new BindingList<CartItemDisplayModel>();
             //TODO add clearing the selected cartitem if it does not do it itself
             await LoadProducts();
+
+            NotifyOfPropertyChange(() => SubTotal);
+            NotifyOfPropertyChange(() => Tax);
+            NotifyOfPropertyChange(() => Total);
+            NotifyOfPropertyChange(() => CanCheckOut);
         }
 
         private CartItemDisplayModel _selectedCartItem;
