@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using MRMDataManager.Library.DataAccess;
 using MRMDataManager.Library.Models;
 using System.Collections.Generic;
@@ -13,10 +14,17 @@ namespace MRMApi.Controllers
     [Authorize]
     public class SaleController : ControllerBase
     {
+        private readonly IConfiguration _config;
+
+        public SaleController(IConfiguration config)
+        {
+            _config = config;
+        }
+
         [Authorize(Roles = "Cashier")]
         public void Post(SaleModel sale)
         {
-            SaleData data = new SaleData();
+            SaleData data = new SaleData(_config);
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier); //.net framework way - RequestContext.Principal.Identity.GetUserId();
 
             data.SaveSale(sale, userId);
@@ -26,7 +34,7 @@ namespace MRMApi.Controllers
         [Route("GetSalesReport")]
         public List<SaleReportModel> GetSalesReport()
         {
-            SaleData data = new SaleData();
+            SaleData data = new SaleData(_config);
 
             return data.GetSaleReport();
         }
